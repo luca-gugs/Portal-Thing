@@ -1,4 +1,4 @@
-import { UserButton, useUser } from "@clerk/nextjs";
+import { UserButton, UserProfile, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -14,12 +14,20 @@ export const ControlPanel = () => {
   ];
   return (
     <div className="flex h-screen flex-col items-center border-r-[2px] border-slate-300 bg-white px-6 py-10 md:w-[300px]">
-      {/* <Image src="/logo.png" height={50} width={50} alt="logo" /> */}
-      {!user.isLoaded ? (
-        <Image src="/logo.png" height={35} width={35} alt="logo" />
-      ) : (
-        <UserButton afterSignOutUrl="/signin" />
-      )}
+      <div className="flex items-center">
+        <Image src="/logo.png" height={50} width={50} alt="logo" />
+
+        <UserButton
+          appearance={{
+            elements: {
+              rootBox: "absolute",
+              avatarBox: "h-[50px] w-[50px] bg-transparent",
+              userButtonAvatarImage: "opacity-0",
+            },
+          }}
+          afterSignOutUrl="/signin"
+        />
+      </div>
 
       <h3 className="pt-8 text-center text-[18px] font-semibold">
         Welcome to EasyKnock
@@ -32,14 +40,15 @@ export const ControlPanel = () => {
           const isActive = item.link === router.asPath;
           return (
             <Link
+              key={item.link}
               href={item.link}
               className={`flex w-full items-center rounded-lg px-2 py-4 font-semibold ${
-                isActive ? "bg-cyan-50" : ""
+                isActive ? "bg-emerald-50" : ""
               }`}
             >
               <div
                 className={`mr-4 h-8 w-8 rounded-full ${
-                  isActive ? "bg-cyan-100" : "bg-zinc-100"
+                  isActive ? "bg-emerald-100" : "bg-zinc-100"
                 }`}
               />{" "}
               {item.name}

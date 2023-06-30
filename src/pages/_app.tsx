@@ -12,7 +12,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider {...pageProps}>
       <Head>
-        <title>Gideon</title>
+        <title>EasyPortal</title>
         <meta
           name="description"
           content="Gideon: a new way to handle requests"
