@@ -17,7 +17,7 @@ const Dashboard: NextPage = () => {
             <h3 className="text-2xl font-semibold text-emerald-500">
               CONGRATULATIONS
             </h3>
-            <h2 className=" text-6xl">You've Prequalified</h2>
+            <h2 className=" text-6xl">You&apos;ve Prequalified</h2>
             <h2 className="ml-2 text-4xl">
               {user?.user?.primaryEmailAddress?.emailAddress}
             </h2>
