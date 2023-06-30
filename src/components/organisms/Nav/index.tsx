@@ -10,12 +10,9 @@ const Nav = () => {
       <div className="w-full px-4 sm:px-6 lg:px-12">
         <div className="flex h-20 items-center justify-between">
           <div className="flex flex-shrink-0 items-center">
-            <Link
-              href="/"
-              className="ml-16 text-[2.5rem] font-bold text-gray-800 md:ml-16 lg:ml-0"
-            >
-              portalthing
-            </Link>
+            <h1 className="ml-16 text-[2.5rem] font-bold text-gray-800 md:ml-16 lg:ml-0">
+              EasyPortal
+            </h1>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 import Head from "next/head";
 import { Comme } from "next/font/google";
 
-const comme = Comme({ subsets: ["latin"] });
+// const comme = Comme({ subsets: ["latin"] });
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
@@ -20,9 +20,9 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Toaster />
-      <main className={comme.className}>
-        <Component {...pageProps} />
-      </main>
+      {/* <main className={comme.className}> */}
+      <Component {...pageProps} />
+      {/* </main> */}
     </ClerkProvider>
   );
 };
