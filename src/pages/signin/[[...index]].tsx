@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <main className="flex h-screen min-h-[600px] w-full items-center justify-center pt-[80px]">
       <Nav />
-      <SignIn />
+      <SignIn redirectUrl="/dashboard" />
     </main>
   );
 }
