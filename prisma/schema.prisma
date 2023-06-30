@@ -1,16 +1,58 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-    provider = "prisma-client-js"
-    previewFeatures = ["jsonProtocol"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
+
+//Gideon Types
+model Post {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  content   String   @db.Text
+  ownerId   String
+
+  @@index([ownerId])
+}
+
+
+//EasyDoc Types
+model UserDocs {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  ownerName String? @db.Text
+  email   String @unique
+  type     String? @db.Text
+
+  ownerId   String @unique
+  payStubOne  String? @db.Text
+  payStubOneStatus  String @db.Text @default("missing")
+
+  payStubTwo  String? @db.Text
+  payStubTwoStatus  String @db.Text @default("missing")
+
+  bankStmntOne  String? @db.Text
+  bankStmntOneStatus  String @db.Text @default("missing")
+
+  bankStmntTwo  String? @db.Text
+  bankStmntTwoStatus  String @db.Text @default("missing")
+
+  bankStmntThree  String? @db.Text
+  bankStmntThreeStatus  String @db.Text @default("missing")
+
+
+
+  @@index([ownerId])
+}
+
+//Wildcat Types
+
+
+//Example Types
 model Example {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
