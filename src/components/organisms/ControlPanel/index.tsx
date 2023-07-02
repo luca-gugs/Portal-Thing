@@ -6,11 +6,13 @@ import { useRouter } from "next/router";
 export const ControlPanel = () => {
   const router = useRouter();
   const user = useUser();
+
+  console.log(router, "router");
   const items = [
-    { link: "/dashboard", name: "Pre-qualification" },
-    { link: "#", name: "Track your progress" },
-    { link: "#", name: "Your recomendations" },
-    { link: "#", name: "Educational Resources" },
+    { link: "/", name: "Pre-qualification" },
+    { link: "/progress", name: "Track your progress" },
+    { link: "/recs", name: "Your recomendations" },
+    { link: "/edu", name: "Educational Resources" },
   ];
   return (
     <div className="hidden h-screen flex-col items-center border-r-[2px] border-slate-300 bg-white px-6 py-10 lg:flex lg:w-[300px] lg:min-w-[300px]">
@@ -37,7 +39,7 @@ export const ControlPanel = () => {
       <hr className="mb-8 mt-6 w-full bg-slate-600" />
       <div className="flex flex-col space-y-2">
         {items.map((item) => {
-          const isActive = item.link === router.asPath;
+          const isActive = item.link === router.pathname;
           return (
             <Link
               key={item.link}
