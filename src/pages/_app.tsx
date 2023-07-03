@@ -13,10 +13,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
     <ClerkProvider {...pageProps}>
       <Head>
         <title>EasyPortal</title>
-        <meta
-          name="description"
-          content="Gideon: a new way to handle requests"
-        />
+        <meta name="Modern Customer Managment" content="PortalThing" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Toaster />
