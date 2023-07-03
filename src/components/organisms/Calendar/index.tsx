@@ -20,6 +20,8 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
     daysInLastMonth,
     lastDayOfMonth,
     daysInCurrentMonth,
+    //
+    currentMonth,
   } = useCalendarContext();
 
   const updateMonth = (month: number) => {
@@ -37,6 +39,7 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
   const is6Row =
     (firstDayOfMonth || 0) + (daysInCurrentMonth || 0) > 35 ? 6 : 5;
 
+  console.log("LAST DAY OF MONTH: ", lastDayOfMonth);
   return (
     <div className="flex h-full flex-col space-y-8">
       <div className="flex w-full ">
@@ -82,23 +85,27 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
         })}
 
         {/* LAST MONTH*/}
-        {daysInLastMonth &&
-          firstDayOfMonth &&
-          Array.from(Array(firstDayOfMonth).keys()).map((date, idx) => {
-            return (
-              <div
-                key={idx}
-                className="items-center justify-center bg-zinc-100 p-4 text-lg line-through"
-              >
-                {daysInLastMonth - (firstDayOfMonth - idx)}
-              </div>
-            );
-          })}
-        {/* TRIGGER DEPLOY */}
+        {daysInLastMonth && firstDayOfMonth
+          ? Array.from(Array(firstDayOfMonth).keys()).map((date, idx) => {
+              const been = month === currentMonth;
+              // const is = dateNum + 1 == date;
+              return (
+                <div
+                  key={idx}
+                  className={`${
+                    been ? "line-through" : ""
+                  } items-center justify-center bg-zinc-100 p-4 text-lg`}
+                >
+                  {daysInLastMonth - (firstDayOfMonth - idx)}
+                </div>
+              );
+            })
+          : null}
+
         {/* CURRENT MONTH */}
         {Array.from(Array(daysInCurrentMonth).keys()).map((dateNum, idx) => {
-          const been = dateNum + 1 < date;
-          const is = dateNum + 1 == date;
+          const been = dateNum + 1 < date && month < currentMonth;
+          const is = dateNum + 1 == date && month === currentMonth;
           return (
             <div key={idx} className={`dream p-4 text-lg`}>
               <div
@@ -115,8 +122,9 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
         })}
 
         {/* NEXT MONTH */}
-        {lastDayOfMonth &&
+        {lastDayOfMonth !== null &&
           Array.from(Array(6 - lastDayOfMonth).keys()).map((_, idx) => {
+            console.log("L:", lastDayOfMonth);
             return (
               <div
                 key={idx}

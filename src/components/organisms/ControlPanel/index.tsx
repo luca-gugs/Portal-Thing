@@ -8,10 +8,11 @@ export const ControlPanel = () => {
   const user = useUser();
 
   const items = [
-    { link: "/", name: "Pre-qualification" },
-    { link: "/progress", name: "Track your progress" },
-    { link: "/recs", name: "Your recomendations" },
-    { link: "/edu", name: "Educational Resources" },
+    { link: "/", name: "Pre-Qualify 🚧" },
+    { link: "/calendar", name: "EasyCal 🚧" },
+    { link: "/progress", name: "Track Process 🔒" },
+    { link: "/recs", name: "Recomendations 🔒" },
+    { link: "/edu", name: "Home Edu 🔒" },
   ];
   return (
     <div className="hidden h-screen flex-col items-center border-r-[2px] border-slate-300 bg-white px-6 py-10 lg:flex lg:w-[300px] lg:min-w-[300px]">
@@ -39,11 +40,12 @@ export const ControlPanel = () => {
       <div className="flex flex-col space-y-2">
         {items.map((item) => {
           const isActive = item.link === router.pathname;
+
           return (
             <Link
               key={item.link}
-              href={item.link}
-              className={`flex w-full items-center rounded-lg px-2 py-4 font-semibold ${
+              href={item.name.includes("🔒") ? "#" : item.link}
+              className={`flex w-full items-center rounded-lg px-2 py-4 text-lg font-semibold ${
                 isActive ? "bg-emerald-50" : ""
               }`}
             >
