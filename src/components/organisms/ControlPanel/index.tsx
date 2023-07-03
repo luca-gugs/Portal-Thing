@@ -7,7 +7,6 @@ export const ControlPanel = () => {
   const router = useRouter();
   const user = useUser();
 
-  console.log(router, "router");
   const items = [
     { link: "/", name: "Pre-qualification" },
     { link: "/progress", name: "Track your progress" },
