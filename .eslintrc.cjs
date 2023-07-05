@@ -28,6 +28,14 @@ const config = {
         fixStyle: "inline-type-imports",
       },
     ],
+    "@typescript-eslint/restrict-template-expressions": [
+      "warn",
+      {
+        allowAny: true,
+      },
+    ],
+    "@typescript-eslint/no-unsafe-member-access": ["warn"],
+
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
   },
 };

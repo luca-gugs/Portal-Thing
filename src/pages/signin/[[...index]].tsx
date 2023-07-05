@@ -3,9 +3,16 @@ import Nav from "~/components/organisms/Nav";
 
 export default function Page() {
   return (
-    <main className="flex h-screen min-h-[600px] w-full items-center justify-center pt-[80px]">
+    <main className="flex h-screen min-h-[600px] w-full justify-center pt-[120px] md:items-center md:pt-[80px]">
       <Nav />
-      <SignIn redirectUrl="/dashboard" />
+      <SignIn
+        appearance={{
+          elements: {
+            rootBox: "max-width: calc(100vw - 5rem)",
+          },
+        }}
+        redirectUrl="/"
+      />
     </main>
   );
 }

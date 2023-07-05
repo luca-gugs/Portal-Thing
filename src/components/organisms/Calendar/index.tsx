@@ -39,7 +39,6 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
   const is6Row =
     (firstDayOfMonth || 0) + (daysInCurrentMonth || 0) > 35 ? 6 : 5;
 
-  console.log("LAST DAY OF MONTH: ", lastDayOfMonth);
   return (
     <div className="flex h-full flex-col space-y-8">
       <div className="flex w-full ">

@@ -50,6 +50,23 @@ model UserDocs {
 }
 
 //Wildcat Types
+model UserProfile {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  firstName String
+  lastName  String
+  streetAddressLine1 String
+  city      String
+  state     String
+  zipCode   String
+  estimatedHomeValue Int
+  mortgageBalance Int
+  desiredCashout Int
+  phoneNumber String
+  propertyType String
+
+  @@index([email])
+}
 
 
 //Example Types
