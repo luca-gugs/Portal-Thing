@@ -80,6 +80,13 @@ export const userProfileRouter = createTRPCRouter({
             propertyType,
           },
         });
+        const userDocument = await ctx.prisma.userDocs.create({
+          data: {
+            email: email,
+            type: "unknown",
+          },
+        });
+        console.log("USER DOC: ", userDocument);
         return newUser;
       }
     } catch (err) {
@@ -88,6 +95,7 @@ export const userProfileRouter = createTRPCRouter({
     }
   }),
   get: privateProcedure.query(async ({ ctx, input }) => {
+    console.log("HERE: ");
     const [user] = await clerkClient.users.getUserList({
       userId: [ctx.userId],
     });

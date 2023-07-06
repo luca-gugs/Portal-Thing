@@ -15,13 +15,13 @@ export const ControlPanel = ({ first, last }: ControlPanel) => {
   const items = [
     { link: "/", name: "Pre-Qualify" },
     { link: "/calendar", name: "EasyCal 🚧" },
-    { link: "/doc", name: "EasyDoc 🚧" },
+    { link: "/docs", name: "EasyDoc 🚧" },
     { link: "/progress", name: "Track Process 🔒" },
     { link: "/recs", name: "Recomendations 🔒" },
     { link: "/edu", name: "Home Edu 🔒" },
   ];
   return (
-    <div className="hidden h-screen flex-col items-center border-r-[2px] border-slate-300 bg-white px-6 py-10 lg:flex lg:w-[300px] lg:min-w-[300px]">
+    <div className="hidden h-screen flex-col items-center overflow-scroll border-r-[2px] border-slate-300 bg-white px-6 py-10 lg:flex lg:w-[300px] lg:min-w-[300px]">
       <UserIcon />
 
       <h3 className="pt-8 text-center text-[18px] font-semibold">

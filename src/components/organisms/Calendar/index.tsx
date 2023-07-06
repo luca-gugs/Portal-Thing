@@ -22,6 +22,7 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
     daysInCurrentMonth,
     //
     currentMonth,
+    currentYear,
   } = useCalendarContext();
 
   const updateMonth = (month: number) => {
@@ -86,7 +87,7 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
         {/* LAST MONTH*/}
         {daysInLastMonth && firstDayOfMonth
           ? Array.from(Array(firstDayOfMonth).keys()).map((date, idx) => {
-              const been = month === currentMonth;
+              const been = month - 1 < currentMonth && year <= currentYear;
               // const is = dateNum + 1 == date;
               return (
                 <div
@@ -103,7 +104,10 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
 
         {/* CURRENT MONTH */}
         {Array.from(Array(daysInCurrentMonth).keys()).map((dateNum, idx) => {
-          const been = dateNum + 1 < date && month < currentMonth;
+          const been =
+            ((dateNum + 1 < date && month == currentMonth) ||
+              month < currentMonth) &&
+            year <= currentYear;
           const is = dateNum + 1 == date && month === currentMonth;
           return (
             <div key={idx} className={`dream p-4 text-lg`}>
@@ -123,11 +127,13 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
         {/* NEXT MONTH */}
         {lastDayOfMonth !== null &&
           Array.from(Array(6 - lastDayOfMonth).keys()).map((_, idx) => {
-            console.log("L:", lastDayOfMonth);
+            const been = month < currentMonth && year <= currentYear;
             return (
               <div
                 key={idx}
-                className="items-center justify-center bg-zinc-100 p-4 text-lg underline underline-offset-1"
+                className={`items-center justify-center bg-zinc-100 p-4 text-lg underline underline-offset-1 ${
+                  been ? "line-through" : ""
+                }`}
               >
                 {idx + 1}
               </div>

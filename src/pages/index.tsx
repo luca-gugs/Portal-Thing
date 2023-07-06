@@ -9,10 +9,15 @@ import { api } from "~/utils/api";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { addCommas } from "~/utils/helpers";
+import { useEffect } from "react";
 
 const Dashboard: NextPage = () => {
   const user = useUser();
   const { data, isLoading } = api.userProfile.get.useQuery();
+
+  // useEffect(() => {
+  //   const { data, isLoading } = api.userProfile.get.useQuery();
+  // }, [user]);
 
   const adrString = `${data?.streetAddressLine1 || "street"}, ${
     data?.city || "city"
@@ -24,7 +29,7 @@ const Dashboard: NextPage = () => {
         <UserIcon />
       </div>
       <ControlPanel first={data?.firstName} last={data?.lastName} />
-      <div className="w-fill flex grow flex-col p-12">
+      <div className="w-fill flex h-screen grow flex-col overflow-scroll p-12">
         <div className="flex w-full flex-col justify-between lg:flex-row">
           <div className="flex w-full flex-col space-y-8 lg:w-1/2">
             <h3 className="text-2xl font-semibold text-emerald-500">

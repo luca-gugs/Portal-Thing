@@ -24,11 +24,10 @@ model Post {
 model UserDocs {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
-  ownerName String? @db.Text
+
   email   String @unique
   type     String? @db.Text
 
-  ownerId   String @unique
   payStubOne  String? @db.Text
   payStubOneStatus  String @db.Text @default("missing")
 
@@ -46,7 +45,7 @@ model UserDocs {
 
 
 
-  @@index([ownerId])
+  @@index([email])
 }
 
 //Wildcat Types

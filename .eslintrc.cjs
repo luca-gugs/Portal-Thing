@@ -34,7 +34,6 @@ const config = {
         allowAny: true,
       },
     ],
-    "@typescript-eslint/no-unsafe-member-access": ["warn"],
 
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
   },
