@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 
-interface ExampleContextType {
+interface CalendarContextType {
   year: number;
   setYear: Dispatch<SetStateAction<number>>;
   month: number;
@@ -22,11 +22,10 @@ interface ExampleContextType {
   //
   currentYear: number;
   currentMonth: number;
-
   currentDay: number;
 }
 
-const CalendarContext = createContext<ExampleContextType>({
+const CalendarContext = createContext<CalendarContextType>({
   year: new Date().getFullYear(),
   month: new Date().getMonth(),
   date: new Date().getDate(),

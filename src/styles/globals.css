@@ -63,3 +63,29 @@
 .gr-template-5 {
   grid-template-rows: 0fr 1fr 1fr 1fr 1fr 1fr;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.imessage {
+  background-color: #147efb;
+}

@@ -56,7 +56,7 @@ export const docsRouter = createTRPCRouter({
     // }
 
     const userDocs = await ctx.prisma.userDocs.findMany();
-    console.log("userDocs", userDocs);
+    (" ");
 
     if (!userDocs) throw new TRPCError({ code: "NOT_FOUND" });
 
@@ -118,13 +118,13 @@ export const docsRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      // console.log("USERDOC: ", input.userDoc);
+      //
       const ownerId = ctx.userId;
 
       const { success } = await ratelimit.limit(ownerId);
       if (!success) throw new TRPCError({ code: "TOO_MANY_REQUESTS" });
 
-      console.log("MEGA-KEY: ", input.userDoc);
+      (" ");
 
       const updateUser = await ctx.prisma.userDocs.update({
         where: {

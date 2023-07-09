@@ -40,7 +40,7 @@ const UploadDocTypePage: NextPage<{ doctype: { slug: string } }> = ({
   const { mutate, isLoading: isPosting } = api.docs.update.useMutation({
     onSuccess: (result) => {
       setIsLoading(true);
-      console.log("SUCCESS: ", result);
+      (" ");
       toast.success("Document Uploaded Successfully");
       void ctx.docs.getByUser.invalidate();
       setReuploadNeeded(false);
@@ -77,7 +77,7 @@ const UploadDocTypePage: NextPage<{ doctype: { slug: string } }> = ({
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore
                   data[slug] = res[0]?.fileUrl;
-                  console.log("DATA: ", data);
+                  (" ");
                   if (data) {
                     mutate({
                       userDoc: data,
@@ -118,7 +118,7 @@ const UploadDocTypePage: NextPage<{ doctype: { slug: string } }> = ({
                         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         data[slug] = res[0]?.fileUrl;
-                        console.log("DATA: ", data);
+                        
                         mutate({
                           userDoc: data,
                           ownerId: data.ownerId,

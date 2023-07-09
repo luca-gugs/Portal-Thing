@@ -11,17 +11,17 @@ const Enrich: NextPage = () => {
   const router = useRouter();
   const { mutate, isLoading: isPosting } = api.userProfile.create.useMutation({
     onSuccess: (x) => {
-      console.log("SUCCESS", x);
+      " ";
       setLoadingFinished(true);
     },
     onError: (e) => {
-      console.log("ERROR: ", e.message);
+      " ";
     },
   });
 
   useEffect(() => {
     if (user.isLoaded && user.isSignedIn) {
-      console.log("user: ", user);
+      (" ");
       mutate();
     }
   }, [user.isLoaded]);

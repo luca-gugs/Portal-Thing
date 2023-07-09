@@ -29,6 +29,29 @@ export const monthFullNameArray = [
   "December",
 ];
 
+export const fakeUsers = [
+  { username: "John", timestamp: new Date() },
+  { username: "Jane", timestamp: new Date() },
+  { username: "Alice", timestamp: new Date() },
+  { username: "User4", timestamp: new Date() },
+  { username: "User5", timestamp: new Date() },
+  { username: "User6", timestamp: new Date() },
+  { username: "User7", timestamp: new Date() },
+  { username: "User8", timestamp: new Date() },
+  { username: "User9", timestamp: new Date() },
+  { username: "User10", timestamp: new Date() },
+  { username: "User11", timestamp: new Date() },
+  { username: "User12", timestamp: new Date() },
+  { username: "User13", timestamp: new Date() },
+  { username: "User14", timestamp: new Date() },
+  { username: "User15", timestamp: new Date() },
+  { username: "User16", timestamp: new Date() },
+  { username: "User17", timestamp: new Date() },
+  { username: "User18", timestamp: new Date() },
+  { username: "User19", timestamp: new Date() },
+  { username: "User20", timestamp: new Date() },
+];
+
 export function addCommas(number: number): any {
   // Convert the number to a string
   const numberString = number.toString();

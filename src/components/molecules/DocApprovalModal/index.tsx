@@ -16,19 +16,15 @@ const DialogDemo = ({
   keyId: string;
 }) => {
   const [newStatus, setNewStatus] = useState("");
-  console.log("keys: ", name, status, keyId);
-  console.log("userDoc, userDoc: ", userDoc);
   const ctx = api.useContext();
 
   const { mutate, isLoading: isPosting } = api.docs.update.useMutation({
     onSuccess: (result) => {
       void ctx.docs.getByUser.invalidate();
 
-      console.log("SUCCESS: ", result);
       //   setUserDoc(result);
     },
     onError: (e) => {
-      // console.log("ERROR: ", e.message);
       if (
         e.message.includes("Unique constraint failed on the (not available)")
       ) {

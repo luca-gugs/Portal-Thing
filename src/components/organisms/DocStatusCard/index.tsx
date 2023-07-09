@@ -44,8 +44,6 @@ const DocStatusCard = ({ userDoc, admin = false }: DocStatusCardProps) => {
     },
   ];
 
-  console.log("userDoc: ", userDoc);
-
   return (
     <div className="relative">
       <div className="shadow-longer z-2 absolute top-[-2rem] w-fit rounded-md bg-zinc-100 p-4">
@@ -60,7 +58,7 @@ const DocStatusCard = ({ userDoc, admin = false }: DocStatusCardProps) => {
         <hr className="mt-2 h-[2px] bg-slate-200" />
         <div className="mt-4 flex flex-col gap-y-4">
           {docsArray.map(({ name, status, keyId }, idx) => {
-            console.log("key: ", keyId);
+            " ";
             return (
               <div className="flex w-full items-center" key={idx}>
                 <Link

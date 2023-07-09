@@ -48,14 +48,6 @@ export const userProfileRouter = createTRPCRouter({
         propertyType,
       } = parsedPayload;
 
-      // const parsedResponse = JSON.parse(response);
-      // const propertyDetailReport = JSON.parse(
-      //   parsedResponse.leadData.propertyDetailReport
-      // );
-      // console.log("firstName: ", firstName);
-      // console.log("lastName: ", lastName);
-      // console.log("rawPayload", parsedPayload);
-
       if (!user) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
@@ -86,16 +78,16 @@ export const userProfileRouter = createTRPCRouter({
             type: "unknown",
           },
         });
-        console.log("USER DOC: ", userDocument);
+        (" ");
         return newUser;
       }
     } catch (err) {
-      console.log("err", err);
+      (" ");
       return err;
     }
   }),
   get: privateProcedure.query(async ({ ctx, input }) => {
-    console.log("HERE: ");
+    " ";
     const [user] = await clerkClient.users.getUserList({
       userId: [ctx.userId],
     });
@@ -106,5 +98,10 @@ export const userProfileRouter = createTRPCRouter({
     });
 
     return userProfile;
+  }),
+  getAll: publicProcedure.query(async ({ ctx }) => {
+    const userProfiles = await ctx.prisma.userProfile.findMany();
+
+    return userProfiles;
   }),
 });

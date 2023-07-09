@@ -16,7 +16,7 @@ const Dashboard: NextPage = () => {
 
   const { data, isLoading } = api.userProfile.get.useQuery();
 
-  console.log("DATA: ", data);
+  (" ");
   const {
     data: userDoc,
     error,
@@ -24,7 +24,7 @@ const Dashboard: NextPage = () => {
   } = api.docs.getByUser.useQuery({
     email: data?.email as string,
   });
-  console.log("test: ", userDoc);
+  (" ");
   //   const adrString = `${data?.streetAddressLine1 || "street"}, ${
   //     data?.city || "city"
   //   }, ${data?.state || "state"}, ${data?.zipCode || "zip"}`;

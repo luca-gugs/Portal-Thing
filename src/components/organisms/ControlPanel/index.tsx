@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Skeleton from "react-loading-skeleton";
 import UserIcon from "~/components/atoms/UserIcon";
+import { api } from "~/utils/api";
 
 export type ControlPanel = {
   first?: string;
@@ -16,10 +17,14 @@ export const ControlPanel = ({ first, last }: ControlPanel) => {
     { link: "/", name: "Pre-Qualify" },
     { link: "/calendar", name: "EasyCal 🚧" },
     { link: "/docs", name: "EasyDoc 🚧" },
+    { link: "/chat", name: "EasyChat 🚧" },
     { link: "/progress", name: "Track Process 🔒" },
     { link: "/recs", name: "Recomendations 🔒" },
     { link: "/edu", name: "Home Edu 🔒" },
   ];
+  const { data: usersData, isLoading: usersLoading } =
+    api.userProfile.getAll.useQuery();
+
   return (
     <div className="hidden h-screen flex-col items-center overflow-scroll border-r-[2px] border-slate-300 bg-white px-6 py-10 lg:flex lg:w-[300px] lg:min-w-[300px]">
       <UserIcon />
