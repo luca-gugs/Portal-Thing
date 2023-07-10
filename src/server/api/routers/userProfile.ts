@@ -11,7 +11,6 @@ import {
   publicProcedure,
 } from "~/server/api/trpc";
 import { QEDataRes, QERawResponse } from "~/utils/data/types";
-// import filterUserForClient from "~/server/helpers/filterUserForClient";
 
 export const userProfileRouter = createTRPCRouter({
   create: privateProcedure.mutation(async ({ ctx, input }) => {
@@ -20,7 +19,6 @@ export const userProfileRouter = createTRPCRouter({
         userId: [ctx.userId],
       });
       const email = user?.emailAddresses[0]?.emailAddress;
-      console.log("ZORD: ", user);
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const qeRes: { data: { [key: string]: string | number }[] } =
