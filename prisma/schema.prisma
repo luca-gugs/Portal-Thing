@@ -8,8 +8,6 @@ datasource db {
   relationMode = "prisma"
 }
 
-
-//Gideon Types
 model Post {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
@@ -19,59 +17,46 @@ model Post {
   @@index([ownerId])
 }
 
-
-//EasyDoc Types
 model UserDocs {
+  id                   String   @id @default(cuid())
+  createdAt            DateTime @default(now())
+  email                String   @unique
+  type                 String?  @db.Text
+  payStubOne           String?  @db.Text
+  payStubOneStatus     String   @default(dbgenerated("(_utf8mb4\\'missing\\')")) @db.Text
+  payStubTwo           String?  @db.Text
+  payStubTwoStatus     String   @default(dbgenerated("(_utf8mb4\\'missing\\')")) @db.Text
+  bankStmntOne         String?  @db.Text
+  bankStmntOneStatus   String   @default(dbgenerated("(_utf8mb4\\'missing\\')")) @db.Text
+  bankStmntTwo         String?  @db.Text
+  bankStmntTwoStatus   String   @default(dbgenerated("(_utf8mb4\\'missing\\')")) @db.Text
+  bankStmntThree       String?  @db.Text
+  bankStmntThreeStatus String   @default(dbgenerated("(_utf8mb4\\'missing\\')")) @db.Text
+
+  @@index([email])
+}
+
+model UserProfile {
+  id                 String @id @default(cuid())
+  userId             String
+  email              String @unique
+  firstName          String
+  lastName           String
+  streetAddressLine1 String
+  city               String
+  state              String
+  zipCode            String
+  estimatedHomeValue Int
+  mortgageBalance    Int
+  desiredCashout     Int
+  phoneNumber        String
+  propertyType       String
+
+  @@index([email])
+}
+
+model Example {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
-
-  email   String @unique
-  type     String? @db.Text
-
-  payStubOne  String? @db.Text
-  payStubOneStatus  String @db.Text @default("missing")
-
-  payStubTwo  String? @db.Text
-  payStubTwoStatus  String @db.Text @default("missing")
-
-  bankStmntOne  String? @db.Text
-  bankStmntOneStatus  String @db.Text @default("missing")
-
-  bankStmntTwo  String? @db.Text
-  bankStmntTwoStatus  String @db.Text @default("missing")
-
-  bankStmntThree  String? @db.Text
-  bankStmntThreeStatus  String @db.Text @default("missing")
-
-
-
-  @@index([email])
-}
-
-//Wildcat Types
-model UserProfile {
-  id        String   @id @default(cuid())
-  // userId    String
-  email     String   @unique
-  firstName String
-  lastName  String
-  streetAddressLine1 String
-  city      String
-  state     String
-  zipCode   String
-  estimatedHomeValue Int
-  mortgageBalance Int
-  desiredCashout Int
-  phoneNumber String
-  propertyType String
-
-  @@index([email])
-}
-
-
-//Example Types
-model Example {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt
 }

@@ -15,8 +15,6 @@ const ChatPanel = ({ isHome = false }) => {
     setIsOpen(true);
   }, []);
 
-  var socket = new WebSocket("ws://localhost:8080/echo");
-
   const { data: usersData, isLoading: usersLoading } =
     api.userProfile.getAll.useQuery();
   return (

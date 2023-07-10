@@ -20,7 +20,7 @@ export const userProfileRouter = createTRPCRouter({
         userId: [ctx.userId],
       });
       const email = user?.emailAddresses[0]?.emailAddress;
-
+      console.log("ZORD: ", user);
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const qeRes: { data: { [key: string]: string | number }[] } =
@@ -59,6 +59,7 @@ export const userProfileRouter = createTRPCRouter({
         const newUser = await ctx.prisma.userProfile.create({
           data: {
             email: email,
+            userId: user.id || "test",
             firstName,
             lastName,
             streetAddressLine1,
@@ -78,7 +79,6 @@ export const userProfileRouter = createTRPCRouter({
             type: "unknown",
           },
         });
-        (" ");
         return newUser;
       }
     } catch (err) {
